@@ -1,0 +1,44 @@
+# ─── Build & review artifacts ────────────────────────────────────────────
+# Screenshots captured during design review. Regenerable, and currently ~15 MB
+# — including captures of an earlier design that was scrapped.
+.impeccable/review/
+
+# Reference images downloaded from the design catalog. Re-fetchable.
+.impeccable/refs/
+
+# Detector cache and decision-page session logs. Machine-local noise.
+.impeccable/hook.cache.json
+.impeccable/questions/
+
+# Per-machine overrides that intentionally differ from the committed config.
+.impeccable/config.local.json
+
+# NOT ignored, and deliberately so:
+#   .impeccable/config.json    — shared detector rules the whole project follows
+#   .impeccable/design.json    — the design system, read by tooling
+#   .impeccable/surfaces/      — the direction contract for index.html
+#   .impeccable/cv-source.html — generates Manuel_Frana_CV.pdf
+
+# ─── LaTeX ───────────────────────────────────────────────────────────────
+# Manuel_Frana_CV.tex is the source and IS tracked. The PDF is tracked too,
+# because index.html links to it and the deploy has to serve it.
+# Everything below is what a local LaTeX run leaves behind.
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# ─── Editors & OS ────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Misc ────────────────────────────────────────────────────────────────
+*.bak

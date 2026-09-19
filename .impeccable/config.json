@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "wide-tracking",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-19T15:44:12.695Z",
+        "reason": "tracked uppercase is the committed drawing-lettering grammar (direction contract OWN-WORLD, seed a96bf0f6); tracking sits only on short mono caps labels, never on paragraph text"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-19T15:44:13.153Z",
+        "reason": "false positive: .sec/.foot carry 44-80px block padding (detector reads the shorthand horizontal 0), .tbl children are th/td with their own 9-13px padding, and .hero is the deliberate full-bleed specimen plate the direction requires"
+      },
+      {
+        "rule": "all-caps-body",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-19T16:12:43.034Z",
+        "reason": "single 38-char identity line: the hero role in tracked mono caps, which is the chosen world's engraved-panel lettering (seed fb86dde3) and a title rather than body copy; no paragraph on the page is uppercased"
+      }
+    ]
+  }
+}

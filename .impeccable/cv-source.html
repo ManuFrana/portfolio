@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Manuel Frana — CV</title>
+<style>
+@page { size: letter; margin: 0.45in 0.5in; }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Cambria","Georgia","Times New Roman",serif;
+  font-size:9.7pt;
+  line-height:1.27;
+  color:#000;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:#000;text-decoration:none}
+
+/* ---- heading block ---- */
+header{text-align:center;margin-bottom:9pt}
+h1{
+  margin:0 0 3pt;
+  font-size:24pt;font-weight:700;
+  font-variant:small-caps;letter-spacing:.6pt;line-height:1;
+}
+.role{font-size:10pt;margin:0 0 3pt}
+.meta{font-size:9.3pt}
+.meta u{text-underline-offset:1.6pt}
+.sep{padding:0 3pt}
+
+/* ---- sections ---- */
+h2{
+  margin:7.5pt 0 0;
+  font-size:12pt;font-weight:400;
+  font-variant:small-caps;letter-spacing:.5pt;
+  border-bottom:.9pt solid #000;
+  padding-bottom:1pt;line-height:1.1;
+}
+.summary{margin:4pt 0 0;text-align:justify}
+
+.entry{margin-top:4pt}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:10pt}
+.row .l{font-weight:700}
+.row .r{white-space:nowrap}
+.row2{display:flex;justify-content:space-between;align-items:baseline;gap:10pt;font-style:italic;font-size:9.5pt}
+.proj .l{font-weight:400}
+.proj .l b{font-weight:700}
+.proj .l i{font-style:italic}
+
+ul{margin:2pt 0 0;padding-left:14pt}
+li{margin:1pt 0;text-align:justify}
+
+.skills{margin:4pt 0 0}
+.skills div{margin:2.2pt 0;text-align:justify}
+.skills b{font-weight:700}
+
+.langs{margin:4pt 0 0}
+h2.brk{break-before:page;margin-top:0}
+.entry,.skills div,li{break-inside:avoid}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Manuel Frana</h1>
+  <p class="role">Senior QA Automation Engineer | SDET</p>
+  <div class="meta">
+    <a href="mailto:manuel.frana@hotmail.com"><u>manuel.frana@hotmail.com</u></a><span class="sep">|</span>+34 672 937663<span class="sep">|</span><a href="https://www.linkedin.com/in/franamanuel/"><u>linkedin.com/in/franamanuel</u></a><span class="sep">|</span><a href="https://github.com/ManuFrana"><u>github.com/ManuFrana</u></a><span class="sep">|</span>Valencia, Spain
+  </div>
+</header>
+
+<h2>Summary</h2>
+<p class="summary">Senior QA Automation Engineer with 5+ years on the core backend framework an enterprise SaaS platform is built on. I identify the quality gap or architectural risk, author the technical specification, and ship the fix in production code myself — a hybrid SDET / software engineer. The platform runs on a proprietary in-house framework, so I build the test harnesses, instrumentation and release tooling rather than adopt them. Strong in test automation, API and integration testing, CI/CD quality gates, progressive rollouts and root cause analysis across PHP, Python and JavaScript backed by MySQL and Redis.</p>
+
+<h2>Experience</h2>
+
+<div class="entry">
+  <div class="row"><span class="l">Senior Quality Assurance Engineer — Framework Team</span><span class="r">Oct 2022 – Present</span></div>
+  <div class="row2"><span>Avature</span><span>Remote, Spain</span></div>
+  <ul>
+    <li>Own quality for the <b>core backend framework</b> — database access layer, <b>Redis</b> caching, and <b>metrics instrumentation</b> — consumed by <b>40</b> product engineering teams, combining test strategy ownership with hands-on feature development in <b>PHP</b>, <b>Python</b> and <b>JavaScript</b>.</li>
+    <li>Independently identify coverage gaps and architectural risks, author the technical specification and acceptance criteria, then <b>implement and ship the change end to end</b> in production code — removing the handoff between QA analysis and development.</li>
+    <li>Design and maintain <b>automated test suites</b> across <b>unit, integration, API and end-to-end (E2E)</b> layers with <b>Selenium WebDriver</b> and <b>custom in-house harnesses</b>, wired into <b>CI/CD pipelines</b> on <b>Docker</b> and <b>Kubernetes</b> so <b>quality gates</b> block regressions before merge.</li>
+    <li>Re-architected monolithic code-style checks into <b>module-scoped, independently schedulable units</b>, unlocking <b>parallel execution</b> and cutting suite runtime by up to <b>50%</b>.</li>
+    <li>Own the <b>progressive rollout plan</b> for a new framework feature — enabling it incrementally across client instances and <b>measuring performance and production impact</b> at each stage before wider release.</li>
+    <li>Automate server-side operational procedures with <b>Rundeck</b> jobs for <b>self-service execution</b>, and coordinate a <b>weekly working session with 2 QA engineers</b> to prioritize testing and automation work in an <b>Agile/Scrum</b> environment.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row"><span class="l">Quality Assurance Engineer</span><span class="r">Jun 2021 – Oct 2022</span></div>
+  <div class="row2"><span>Avature</span><span>Remote, Argentina</span></div>
+  <ul>
+    <li>Built <b>automated regression and E2E test suites</b> with <b>Selenium</b> and unit tests, replacing <b>20</b> recurring manual regression passes per release cycle.</li>
+    <li>Executed <b>exploratory, data consistency and regression testing</b> across releases, authoring reproducible <b>defect reports</b> through to resolution, and validated backend behaviour by inspecting <b>HTTP traffic</b> and querying <b>MySQL</b> directly to confirm <b>data integrity</b>.</li>
+  </ul>
+</div>
+
+<h2 class="brk">Projects</h2>
+
+<div class="entry proj">
+  <div class="row"><span class="l"><b>Catox</b> — Multiplayer Strategy Game | <i>Luau, React (jsdotlua), Rodux, Rojo, Wally, TestEZ</i></span><span class="r">2026 – Present</span></div>
+  <ul>
+    <li>Architected a <b>server-authoritative multiplayer game</b> (~<b>49K LOC</b> Luau, live on Roblox) where every state transition is validated server-side, routing all RemoteEvents and RemoteFunctions through a single <b>Command pattern gateway</b> so validation, authorization and abuse detection live in one layer rather than hundreds of call sites.</li>
+    <li>Wrote core game logic as <b>headless modules with injected dependencies</b> so it could be mocked and run outside the Roblox engine — a <b>67-spec automated suite</b> (TestEZ + Lune) over logic the engine cannot unit test. Abstracting execution from any real player session also made <b>AI opponents</b> possible.</li>
+  </ul>
+</div>
+
+<div class="entry proj">
+  <div class="row"><span class="l"><b>Courts</b> — Booking Automation Bot | <i>Python, Playwright, asyncio, SQLite, Docker</i></span><span class="r">2026</span></div>
+  <ul>
+    <li>Built an <b>asynchronous Telegram bot</b> that scrapes live tennis court availability and <b>auto-reserves</b> slots the moment they are released at midnight, automating a booking race a group of players kept losing.</li>
+    <li>Reverse-engineered an ASP.NET booking platform's internal APIs (ViewState / EventValidation, session-bound tokens) and drove authenticated flows with <b>Playwright</b> and <b>httpx</b>; encrypted credentials at rest with <b>Fernet (AES)</b> and persisted sessions, reservations and cached availability in <b>SQLite</b>.</li>
+    <li>Diagnosed a production outage through <b>root cause analysis</b> — booking tokens fetched in one HTTP session were rejected when submitted from another — shipped the same-session fix and documented it in a written <b>post-mortem</b>. <b>Dockerised</b> deploy with a persistent volume; <b>pytest</b> coverage over the availability parser.</li>
+
+  </ul>
+</div>
+
+<h2>Technical Skills</h2>
+<div class="skills">
+  <div><b>Languages</b>: PHP, Python, JavaScript/TypeScript, Luau, Java, SQL, HTML/CSS, Bash</div>
+  <div><b>Testing &amp; QA</b>: Test Automation Frameworks, Selenium WebDriver, Playwright, pytest, Unit / Integration / API / End-to-End (E2E) Testing, Regression Testing, Exploratory Testing, Parallel Test Execution, Test Plans &amp; Cases, Defect Tracking, Root Cause Analysis, Shift-Left Testing, Postman, Charles Proxy</div>
+  <div><b>Backend &amp; Data</b>: REST APIs, MySQL, Redis, Caching Strategies, SQLite, Database Design, Data Consistency Validation</div>
+  <div><b>DevOps</b>: Docker, Kubernetes, CI/CD Pipelines, Rundeck, Git &amp; GitHub, Linux, Metrics Instrumentation, Log Analysis, Monitoring &amp; Alerting</div>
+  <div><b>Practices</b>: Agile / Scrum, SDLC &amp; STLC, Release Management, Progressive / Phased Rollouts, Code Review, Technical Specification Writing, Cross-Functional Collaboration, Mentoring</div>
+</div>
+
+<h2>Education</h2>
+<div class="entry">
+  <div class="row"><span class="l">Universidad Tecnológica Nacional (UTN) — Córdoba</span><span class="r">Graduated Jun 2024</span></div>
+  <div class="row2"><span>Engineer's Degree, Information Systems Engineering (5-year program) — GPA 8.67 / 10</span><span>Córdoba, Argentina</span></div>
+</div>
+<div class="entry">
+  <div class="row"><span class="l">Cambridge University — First Certificate in English (FCE)</span><span class="r">England</span></div>
+</div>
+
+<h2>Languages</h2>
+<div class="langs">Spanish — Native &nbsp;&nbsp;|&nbsp;&nbsp; English — Advanced (professional working proficiency)</div>
+
+</body>
+</html>

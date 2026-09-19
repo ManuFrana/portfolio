@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manuel Frana — Senior QA Automation Engineer / SDET</title>
+<meta name="description" content="Senior QA Automation Engineer on Avature's Framework team: the core backend layer ~40 product teams build on. Test automation, CI/CD quality gates, progressive rollouts. Projects: Catox and Courts.">
+<meta property="og:title" content="Manuel Frana — Senior QA Automation Engineer / SDET">
+<meta property="og:description" content="Senior QA Automation Engineer on Avature's Framework team: the core backend layer ~40 product teams build on. Catox: 49,484 lines of Luau, server-authoritative, 67 automated spec files.">
+<meta property="og:type" content="profile">
+<meta property="og:image" content="assets/catox-world.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#08090B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500&family=Big+Shoulders+Display:wght@500;600;700&family=Chivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#08090B;
+  --chassis:#0E0E10;
+  --gunmetal:#1C1F24;
+  --mesh:#3A3D42;
+  --steel:#5C6168;
+  --label:#7C838C;
+  --plasma:#FF8A00;
+  --plasma-dim:#8A4A08;
+  --text:#DADDE2;
+  --text-2:#9AA1A9;
+  --display:'Big Shoulders Display',system-ui,sans-serif;
+  --sans:'Chivo',system-ui,sans-serif;
+  --mono:'Azeret Mono',ui-monospace,monospace;
+  --gut:clamp(20px,5vw,64px);
+  --sec:clamp(64px,9vw,136px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html:focus-within{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ink);color:var(--text);
+  font-family:var(--sans);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---- browser surfaces, themed off the chassis ---- */
+::selection{background:var(--plasma);color:#120800}
+:focus-visible{outline:2px solid var(--plasma);outline-offset:3px}
+*{scrollbar-width:thin;scrollbar-color:var(--mesh) var(--chassis)}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--chassis)}
+::-webkit-scrollbar-thumb{background:var(--mesh);border:3px solid var(--chassis)}
+::-webkit-scrollbar-thumb:hover{background:var(--steel)}
+
+img{display:block;max-width:100%}
+dl,dd{margin:0}
+
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 var(--gut)}
+
+/* ================= CHASSIS LETTERING ================= */
+h1,h2,h3{font-family:var(--display);text-transform:uppercase;margin:0;font-weight:700}
+h1{font-size:clamp(4.6rem,13vw,9rem);line-height:.86;letter-spacing:.005em;color:var(--text)}
+h2{font-size:clamp(1.9rem,4.6vw,3rem);line-height:.95;letter-spacing:.012em;color:var(--text)}
+h3{font-size:clamp(1.25rem,2.4vw,1.55rem);line-height:1.05;letter-spacing:.02em;color:var(--text)}
+
+p{margin:0 0 18px;max-width:66ch;color:var(--text-2)}
+p strong{color:var(--text);font-weight:600}
+a{color:inherit}
+
+.lbl{
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--label);
+}
+
+/* ================= FIXED CHASSIS RAIL ================= */
+.rail{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  background:rgba(14,14,16,.95);
+  border-top:1px solid var(--gunmetal);
+  transform:translateY(102%);transition:transform .32s cubic-bezier(.16,1,.3,1);
+}
+.rail[data-on="1"]{transform:none}
+.rail .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:11px;padding-bottom:11px}
+.rail-id{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--text-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rail-id b{color:var(--text);font-weight:500}
+
+/* ================= ENGRAVED PLATE BUTTON ================= */
+.plate{
+  --pad:17px 26px;
+  position:relative;display:inline-flex;align-items:center;gap:14px;
+  padding:var(--pad);text-decoration:none;
+  background:linear-gradient(180deg,#1A1D22 0%,#131519 100%);
+  border:1px solid var(--mesh);
+  font-family:var(--mono);font-size:13px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text);
+  transition:border-color .2s ease,color .2s ease,background .2s ease;
+}
+.plate::before,.plate::after{
+  content:"";position:absolute;width:3px;height:3px;border-radius:50%;
+  background:var(--steel);top:50%;transform:translateY(-50%);
+}
+.plate::before{left:9px}
+.plate::after{right:9px}
+.plate span{padding:0 6px;white-space:nowrap}
+.plate:hover,.plate:focus-visible{border-color:var(--plasma);color:var(--plasma);background:linear-gradient(180deg,#221A10 0%,#15100A 100%)}
+.plate:hover svg,.plate:focus-visible svg{color:var(--plasma)}
+.plate svg{color:var(--label);transition:color .2s ease;flex:none}
+.plate-sm{--pad:12px 20px;font-size:12px}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:calc(var(--sec) * .8) 0 var(--sec);
+}
+.hero-name{margin-bottom:clamp(20px,3vw,30px)}
+.hero-rule{height:1px;background:var(--gunmetal);margin:0 0 clamp(30px,4vw,44px)}
+.hero-role{
+  font-family:var(--mono);font-size:clamp(12px,1.5vw,15px);font-weight:500;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--text-2);
+  margin:0 0 clamp(36px,5vw,54px);max-width:none;
+}
+
+/* ================= SECTIONS ================= */
+.sec{padding:var(--sec) 0;border-top:1px solid var(--gunmetal)}
+.sec-head{display:flex;align-items:baseline;gap:20px;margin-bottom:clamp(30px,4vw,46px);flex-wrap:wrap}
+
+.cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(28px,5vw,64px)}
+
+.panel{background:var(--chassis);border:1px solid var(--gunmetal);padding:clamp(20px,2.6vw,30px)}
+.panel + .panel{margin-top:14px}
+.panel p{margin:12px 0 0;font-size:15px}
+
+/* ---- spec rows ---- */
+.rows{border-top:1px solid var(--gunmetal)}
+.row{
+  display:grid;grid-template-columns:178px minmax(0,1fr);gap:24px;
+  padding:17px 0;border-bottom:1px solid var(--gunmetal);
+}
+.row dt{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--label);padding-top:4px}
+.row dd{color:var(--text-2);font-size:15px}
+
+/* ---- experience ---- */
+.job{padding:clamp(24px,3vw,34px) 0;border-bottom:1px solid var(--gunmetal)}
+.job:first-of-type{border-top:1px solid var(--gunmetal)}
+.job-top{display:flex;align-items:baseline;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:16px}
+.job-when{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--label);white-space:nowrap}
+.job ul{margin:0;padding:0;list-style:none;max-width:74ch}
+.job li{position:relative;padding-left:24px;margin:11px 0;color:var(--text-2);font-size:15.5px}
+.job li::before{content:"";position:absolute;left:0;top:.68em;width:11px;height:1px;background:var(--steel)}
+
+/* ================= FIGURES ================= */
+.figs{display:flex;gap:clamp(32px,6vw,72px);flex-wrap:wrap;margin:0 0 clamp(32px,4vw,46px)}
+.fig{display:flex;flex-direction:column;gap:9px}
+.fig-n{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(2.8rem,6.4vw,4.4rem);line-height:.88;
+  letter-spacing:.01em;color:var(--plasma);
+}
+
+/* ================= PROJECTS ================= */
+.proj{border-top:1px solid var(--gunmetal);padding:var(--sec) 0}
+.proj-stack{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;color:var(--label);
+  margin:0 0 clamp(26px,3.4vw,38px);max-width:none;
+}
+.proj-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,52px);align-items:start}
+
+figure{margin:0;border:1px solid var(--gunmetal);background:var(--chassis)}
+figure img{width:100%;height:auto}
+figcaption{
+  padding:11px 14px;border-top:1px solid var(--gunmetal);
+  font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--label);display:flex;justify-content:space-between;gap:12px;
+}
+.shots{display:grid;gap:14px;margin-top:clamp(24px,3vw,34px)}
+.shots-2{grid-template-columns:1fr 1fr}
+
+.note{
+  border:1px solid var(--plasma-dim);background:rgba(255,138,0,.05);
+  padding:15px 17px;font-size:14.5px;color:var(--text-2);max-width:64ch;
+}
+.note b{
+  display:block;font-family:var(--mono);font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--plasma);margin-bottom:7px;
+}
+
+/* ================= CONTACT ================= */
+.contacts{border-top:1px solid var(--gunmetal);margin-top:clamp(28px,4vw,40px)}
+.contact{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:20px 0;border-bottom:1px solid var(--gunmetal);text-decoration:none;
+}
+.contact .lbl{display:block;margin-bottom:6px}
+.contact .val{font-size:clamp(1rem,2vw,1.2rem);color:var(--text);font-weight:500;word-break:break-word;transition:color .18s ease}
+.contact:hover .val,.contact:focus-visible .val{color:var(--plasma)}
+.contact svg{flex:none;color:var(--label);transition:color .18s ease,transform .18s ease}
+.contact:hover svg,.contact:focus-visible svg{color:var(--plasma);transform:translate(2px,-2px)}
+
+footer{padding:clamp(34px,5vw,54px) 0 calc(clamp(34px,5vw,54px) + 58px);border-top:1px solid var(--gunmetal)}
+.foot-row{display:flex;flex-wrap:wrap;gap:10px 30px}
+
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-9999px;top:10px;z-index:99}
+.skip:focus{left:10px}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width:860px){
+  .cols,.proj-grid{grid-template-columns:minmax(0,1fr)}
+  .shots-2{grid-template-columns:minmax(0,1fr)}
+  .row{grid-template-columns:minmax(0,1fr);gap:7px}
+  .row dt{padding-top:0}
+}
+@media (max-width:560px){
+  .job-top{gap:8px}
+  .rail .wrap{padding-top:9px;padding-bottom:9px}
+  .rail-id{font-size:12px}
+  .rail-role{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html:focus-within{scroll-behavior:auto}
+  *{transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<a class="plate plate-sm skip" href="#main"><span>Skip to content</span></a>
+
+<!-- fixed chassis rail: rises once the hero is behind you -->
+<div class="rail" id="rail">
+  <div class="wrap">
+    <span class="rail-id"><b>Manuel Frana</b><span class="rail-role"> &nbsp;/&nbsp; Senior QA Automation Engineer</span></span>
+    <a class="plate plate-sm" href="Manuel_Frana_CV.pdf" download>
+      <span>Download CV</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" aria-hidden="true"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+    </a>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="wrap">
+      <h1 class="hero-name">Manuel<br>Frana</h1>
+      <div class="hero-rule"></div>
+      <p class="hero-role">Senior QA Automation Engineer&nbsp;&nbsp;/&nbsp;&nbsp;SDET</p>
+      <a class="plate" href="Manuel_Frana_CV.pdf" download>
+        <span>Download CV</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" aria-hidden="true"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- ===================== WHAT I DO ===================== -->
+  <section class="sec" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>What I do</h2>
+      </div>
+      <div class="cols">
+        <div>
+          <p>I am a Senior QA Engineer at <strong>Avature</strong> on the <strong>Framework team</strong>, the core backend layer that roughly <strong>40 product engineering teams</strong> build on top of. Database access, Redis caching, metrics registration: when it breaks, it breaks everywhere at once.</p>
+          <p>The job runs the whole cycle rather than the testing half of it. I find the coverage gap or the architectural risk, write the technical specification and the acceptance criteria, then <strong>implement and ship the change in production code</strong> myself. There is no handoff between the analysis and the fix.</p>
+          <p>Because the platform runs on a <strong>proprietary in-house framework</strong>, the test harnesses, the instrumentation and the release tooling are not things we adopt. They are things we build.</p>
+        </div>
+        <div>
+          <div class="panel">
+            <h3>Currently</h3>
+            <p>Owns the <strong>progressive rollout</strong> of a new framework feature, enabling it incrementally across client instances and measuring performance and production impact at each stage before it goes wider.</p>
+          </div>
+          <div class="panel">
+            <h3>Recently</h3>
+            <p>Re-architected monolithic code-style checks that scanned the entire codebase into module-scoped, independently schedulable units, unlocking parallel execution and cutting suite runtime by up to <strong>50%</strong>.</p>
+          </div>
+          <div class="panel">
+            <h3>Also</h3>
+            <p>Automates server-side operational procedures with <strong>Rundeck</strong>, and coordinates a weekly working session with <strong>2 QA engineers</strong> to prioritise testing and automation work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCE ===================== -->
+  <section class="sec" id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Experience</h2>
+      </div>
+
+      <div class="job">
+        <div class="job-top">
+          <h3>Senior QA Engineer, Framework Team &middot; Avature</h3>
+          <span class="job-when">Oct 2022 &ndash; Present</span>
+        </div>
+        <ul>
+          <li>Owns quality for the core backend framework: database access layer, Redis caching and metrics registration, consumed by ~40 product engineering teams.</li>
+          <li>Designs and maintains automated suites across unit, integration, API and end-to-end layers with Selenium WebDriver and custom in-house harnesses, wired into CI/CD pipelines on Docker and Kubernetes.</li>
+          <li>Extends the framework's metrics instrumentation so performance regressions in caching and database access paths surface before production.</li>
+          <li>Automates operational procedures across server environments with Rundeck jobs, giving QA and development self-service execution of previously manual tasks.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-top">
+          <h3>QA Engineer &middot; Avature</h3>
+          <span class="job-when">Jun 2021 &ndash; Oct 2022</span>
+        </div>
+        <ul>
+          <li>Built automated regression and E2E suites with Selenium, replacing recurring manual regression passes each release cycle.</li>
+          <li>Ran exploratory, data consistency and regression testing across releases, and authored reproducible defect reports through to resolution.</li>
+          <li>Validated backend behaviour by inspecting HTTP traffic and querying MySQL directly to confirm data integrity across services.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SPECIFICATION ===================== -->
+  <section class="sec" id="spec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Specification</h2>
+      </div>
+      <dl class="rows">
+        <div class="row"><dt>Languages</dt><dd>PHP&nbsp;· Python&nbsp;· JavaScript / TypeScript&nbsp;· Luau&nbsp;· Java&nbsp;· SQL&nbsp;· Bash</dd></div>
+        <div class="row"><dt>Testing &amp; QA</dt><dd>Test automation frameworks&nbsp;· Selenium WebDriver&nbsp;· Playwright&nbsp;· pytest&nbsp;· unit, integration, API and end-to-end testing&nbsp;· regression and exploratory testing&nbsp;· parallel test execution&nbsp;· test plans and cases&nbsp;· defect tracking&nbsp;· root cause analysis&nbsp;· shift-left testing&nbsp;· Postman&nbsp;· Charles Proxy</dd></div>
+        <div class="row"><dt>Backend &amp; Data</dt><dd>REST APIs&nbsp;· MySQL&nbsp;· Redis&nbsp;· caching strategies&nbsp;· SQLite&nbsp;· database design&nbsp;· data consistency validation</dd></div>
+        <div class="row"><dt>DevOps</dt><dd>Docker&nbsp;· Kubernetes&nbsp;· CI/CD pipelines&nbsp;· Rundeck&nbsp;· Git and GitHub&nbsp;· Linux&nbsp;· metrics instrumentation&nbsp;· log analysis&nbsp;· monitoring and alerting</dd></div>
+        <div class="row"><dt>Practice</dt><dd>Agile / Scrum&nbsp;· SDLC and STLC&nbsp;· release management&nbsp;· progressive rollouts&nbsp;· code review&nbsp;· technical specification writing&nbsp;· mentoring</dd></div>
+        <div class="row"><dt>Education</dt><dd>Engineer's Degree, Information Systems Engineering — Universidad Tecnológica Nacional, Córdoba. Graduated June 2024, GPA 8.67&nbsp;/&nbsp;10.&nbsp;· Cambridge First Certificate in English</dd></div>
+        <div class="row"><dt>Spoken</dt><dd>Spanish: native&nbsp;· English: advanced, professional working proficiency</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ===================== CATOX ===================== -->
+  <section class="proj" id="catox">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Catox</h2>
+      </div>
+      <p class="proj-stack">Personal project&nbsp;· Luau&nbsp;· React (jsdotlua)&nbsp;· Rodux&nbsp;· Rojo&nbsp;· Wally&nbsp;· TestEZ&nbsp;· Lune</p>
+
+      <div class="figs">
+        <div class="fig"><span class="fig-n">49,484</span><span class="lbl">Lines of Luau</span></div>
+        <div class="fig"><span class="fig-n">67</span><span class="lbl">Automated spec files</span></div>
+      </div>
+
+      <div class="proj-grid">
+        <div>
+          <p>A server-authoritative multiplayer strategy game on Roblox. Players settle a hex island, trade resources and race to build it out. Every one of those state transitions is decided on the server, so no client can invent a move the rules do not allow.</p>
+          <p>Every RemoteEvent and RemoteFunction routes through a single <strong>command gateway</strong> instead of being fired directly from game code. Validation, authorization and abuse detection live in that one layer rather than scattered across hundreds of call sites.</p>
+          <p>Design patterns run through the codebase for the usual reasons — quality, testability, reuse — but the <strong>command pattern</strong> paid off in a way I had not planned for. Once every event and remote call is a command object, executing one no longer depends on a real Roblox player being there to trigger it.</p>
+          <p>That is what made <strong>bots</strong> possible. They issue exactly the same commands a person does, so you can fill a match with them and play without waiting for five friends to be online at the same time.</p>
+        </div>
+        <div>
+          <div class="panel">
+            <h3>Tested outside the engine</h3>
+            <p>Roblox has no real way to run a full unit-test suite against core game logic. So the core modules are written <strong>headless</strong>, with their dependencies injected — which lets them be mocked and run under <strong>Lune</strong>, outside the engine entirely.</p>
+          </div>
+          <div class="note">
+            <b>Status</b>
+            Live and running on Roblox, currently private while the last details are polished. There is no public listing to link yet, and no player numbers to quote.
+          </div>
+        </div>
+      </div>
+
+      <div class="shots shots-2">
+        <figure>
+          <img src="assets/catox-top.jpg" alt="Top-down view of the Catox island showing the full hex grid, port structures around the coastline and the turn timer above the board." loading="lazy" width="1400" height="659">
+          <figcaption><span>Board topology</span></figcaption>
+        </figure>
+        <figure>
+          <img src="assets/catox-trade.jpg" alt="The Catox trade screen: a scroll-styled interface with You Give and You Receive columns, resource cards, and Trade with Bank and Trade with Players actions." loading="lazy" width="1400" height="659">
+          <figcaption><span>Trade UI &middot; React + Rodux</span></figcaption>
+        </figure>
+      </div>
+      <div class="shots">
+        <figure>
+          <img src="assets/catox-world.jpg" alt="First-person view inside Catox: a hex-tiled island with player-built settlements in blue, magenta and red, numbered resource tiles floating above the terrain." loading="lazy" width="1920" height="900">
+          <figcaption><span>In-world view</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COURTS ===================== -->
+  <section class="proj" id="courts">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Courts</h2>
+      </div>
+      <p class="proj-stack">Personal project&nbsp;· Python&nbsp;· Playwright&nbsp;· asyncio&nbsp;· SQLite&nbsp;· Docker&nbsp;· Telegram</p>
+
+      <div class="proj-grid">
+        <div>
+          <p>My friends and I play tennis, and we wanted specific courts at specific times. Every time we opened the booking page the high-demand slots were already gone, taken minutes after they opened.</p>
+          <p>So I built a bot that does the booking for us. It watches availability, and it runs itself on the dates we care about, so we always have a court when we actually want to play.</p>
+          <p>Getting there meant reverse-engineering an ASP.NET booking platform's internal APIs (ViewState, EventValidation, session-bound tokens) and driving the authenticated flow with <strong>Playwright</strong> and httpx. Credentials are encrypted at rest with Fernet; sessions, reservations and cached availability persist in SQLite.</p>
+          <p>Then every booking started failing at once, while booking by hand in a real browser still worked. The platform had quietly tightened its token validation: the bot was fetching booking tokens in one HTTP session and spending them in another. I wrote the whole diagnosis up as a post-mortem afterwards.</p>
+        </div>
+        <div>
+          <div class="panel">
+            <h3>How it runs</h3>
+            <p>A Telegram bot is the whole interface: ask it what is free, or let the scheduled job take a slot the moment it opens at midnight.</p>
+          </div>
+          <div class="panel">
+            <h3>Also in it</h3>
+            <p>Per-user Fernet-encrypted credentials, a Dockerised deploy with a persistent volume, and pytest coverage over the availability parser using recorded API fixtures.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="sec" id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Get in touch</h2>
+      </div>
+      <p>Open to Senior QA, SDET and backend engineering roles.</p>
+
+      <div class="contacts">
+        <a class="contact" href="mailto:manuel.frana@hotmail.com">
+          <span><span class="lbl">Email</span><span class="val">manuel.frana@hotmail.com</span></span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+        </a>
+        <a class="contact" href="https://www.linkedin.com/in/franamanuel/" target="_blank" rel="noopener">
+          <span><span class="lbl">LinkedIn</span><span class="val">linkedin.com/in/franamanuel</span></span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+        </a>
+        <a class="contact" href="https://github.com/ManuFrana" target="_blank" rel="noopener">
+          <span><span class="lbl">GitHub</span><span class="val">github.com/ManuFrana</span></span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+        </a>
+        <a class="contact" href="Manuel_Frana_CV.pdf" download>
+          <span><span class="lbl">Curriculum vitae</span><span class="val">Manuel_Frana_CV.pdf</span></span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot-row">
+      <span class="lbl">Manuel Frana</span>
+      <span class="lbl">2026</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  // the chassis rail rises once the hero is behind you
+  var rail = document.getElementById('rail'), hero = document.querySelector('.hero');
+  if ('IntersectionObserver' in window && rail && hero) {
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ rail.setAttribute('data-on', e.isIntersecting ? '0' : '1'); });
+    }, {threshold:0.12}).observe(hero);
+  }
+})();
+</script>
+</body>
+</html>
