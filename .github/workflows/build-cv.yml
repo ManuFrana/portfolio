@@ -1,0 +1,58 @@
+name: Build CV
+
+# Recompiles Manuel_Frana_CV.pdf whenever the LaTeX source changes, and commits
+# the result back so index.html always links to an up-to-date PDF.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Manuel_Frana_CV.tex'
+      - '.github/workflows/build-cv.yml'
+  workflow_dispatch:        # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write           # required to push the rebuilt PDF back
+
+concurrency:
+  group: build-cv
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Compile the CV with pdfLaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          # The action runs a full TeX Live image, so glyphtounicode — which
+          # \pdfgentounicode needs to make the PDF text ATS-parsable — is present.
+          root_file: Manuel_Frana_CV.tex
+          args: -pdf -interaction=nonstopmode -halt-on-error -file-line-error
+
+      - name: Fail if the PDF was not produced
+        run: |
+          test -f Manuel_Frana_CV.pdf || { echo "::error::pdfLaTeX produced no PDF"; exit 1; }
+          echo "PDF size: $(du -h Manuel_Frana_CV.pdf | cut -f1)"
+
+      - name: Commit the rebuilt PDF
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- Manuel_Frana_CV.pdf; then
+            echo "PDF is unchanged — nothing to commit."
+            exit 0
+          fi
+          git add Manuel_Frana_CV.pdf
+          git commit -m "Rebuild CV PDF from Manuel_Frana_CV.tex [skip ci]"
+          git push
+
+      - name: Upload the PDF as an artifact
+        # Handy when a run fails review: download the PDF without pulling the commit.
+        uses: actions/upload-artifact@v4
+        with:
+          name: Manuel_Frana_CV
+          path: Manuel_Frana_CV.pdf
+          if-no-files-found: error

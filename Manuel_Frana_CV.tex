@@ -5,11 +5,11 @@
 %
 % Adapted for: Manuel Frana — Senior QA Automation Engineer / SDET
 %
-% HOW TO BUILD: paste into https://overleaf.com (New Project > Blank Project),
-% compile with pdfLaTeX. No local LaTeX install needed.
-%
-% Status: no placeholders left — every figure is one Manuel confirmed.
-%------------------------
+% THIS FILE IS THE SOURCE OF TRUTH FOR THE CV.
+% Pushing a change to it triggers .github/workflows/build-cv.yml, which
+% compiles it with pdfLaTeX and commits the resulting Manuel_Frana_CV.pdf
+% back to the repo. index.html links to that PDF by filename.
+%-------------------------
 
 \documentclass[letterpaper,11pt]{article}
 
@@ -97,7 +97,6 @@
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \begin{document}
 
 %----------HEADING----------
@@ -112,23 +111,19 @@
     Valencia, Spain
 \end{center}
 
-
 %-----------SUMMARY-----------
 \section{Summary}
 \vspace{2pt}
 {\small
-Senior QA Automation Engineer with 5+ years building and testing the core backend framework
-services used by every product team at an enterprise SaaS company. Work spans the full
-software development life cycle (SDLC): I identify quality gaps, author the technical
-specification, and implement the fix in production code myself — operating as a hybrid
-SDET / software engineer. Because the platform runs on a proprietary in-house framework,
-I build the test harnesses, instrumentation and release tooling that off-the-shelf
-frameworks would otherwise provide. Strong in test automation, API and integration testing,
-CI/CD quality gates, progressive feature rollouts and root cause analysis across PHP,
-Python and JavaScript services backed by MySQL and Redis.
+Senior QA Automation Engineer with 5+ years on the core backend framework an enterprise SaaS
+platform is built on. I identify the quality gap or architectural risk, author the technical
+specification, and ship the fix in production code myself — a hybrid SDET / software engineer.
+The platform runs on a proprietary in-house framework, so I build the test harnesses,
+instrumentation and release tooling rather than adopt them. Strong in test automation, API and
+integration testing, CI/CD quality gates, progressive rollouts and root cause analysis across
+PHP, Python and JavaScript backed by MySQL and Redis.
 }
 \vspace{-4pt}
-
 
 %-----------EXPERIENCE-----------
 \section{Experience}
@@ -139,31 +134,28 @@ Python and JavaScript services backed by MySQL and Redis.
       {Avature}{Remote, Spain}
       \resumeItemListStart
         \resumeItem{Own quality for the \textbf{core backend framework} — database access layer,
-          \textbf{Redis} caching, and metrics registration — consumed by \textbf{40} product engineering
-          teams, combining test strategy ownership with hands-on feature development in \textbf{PHP},
-          \textbf{Python} and \textbf{JavaScript}.}
+          \textbf{Redis} caching, and \textbf{metrics instrumentation} — consumed by \textbf{40}
+          product engineering teams, combining test strategy ownership with hands-on feature
+          development in \textbf{PHP}, \textbf{Python} and \textbf{JavaScript}.}
         \resumeItem{Independently identify coverage gaps and architectural risks, author the technical
-          specification and acceptance criteria, then \textbf{implement and ship the change end to end} in
-          production code — removing the handoff between QA analysis and development.}
-        \resumeItem{Re-architected monolithic code-style checks that scanned the entire codebase into
-          \textbf{module-scoped, independently schedulable test units}, unlocking \textbf{parallel execution}
-          and cutting suite runtime by up to \textbf{50\%}.}
-        \resumeItem{Design and maintain \textbf{automated test suites} spanning \textbf{unit, integration,
-          API and end-to-end (E2E)} layers with \textbf{Selenium WebDriver} and \textbf{custom in-house test
-          harnesses}, wired into \textbf{CI/CD pipelines} on \textbf{Docker} and \textbf{Kubernetes} so
-          \textbf{quality gates} block regressions before merge.}
+          specification and acceptance criteria, then \textbf{implement and ship the change end to end}
+          in production code — removing the handoff between QA analysis and development.}
+        \resumeItem{Design and maintain \textbf{automated test suites} across \textbf{unit, integration,
+          API and end-to-end (E2E)} layers with \textbf{Selenium WebDriver} and \textbf{custom in-house
+          harnesses}, run by \textbf{Jenkins} pipelines that build, test and deploy the team's
+          \textbf{Debian packages}.}
+        \resumeItem{Operate \textbf{Redis} inside \textbf{Docker} containers as part of the framework
+          stack, handling container configuration and runtime operations such as enabling
+          \textbf{authentication} on running instances.}
+        \resumeItem{Re-architected monolithic code-style checks into \textbf{module-scoped,
+          independently schedulable units}, unlocking \textbf{parallel execution} and cutting suite
+          runtime by up to \textbf{50\%}.}
         \resumeItem{Own the \textbf{progressive rollout plan} for a new framework feature — enabling it
-          incrementally across client instances and \textbf{measuring performance and production impact} at
-          each stage before wider release.}
-        \resumeItem{Automate operational procedures across server environments with \textbf{Rundeck} jobs,
-          giving QA and development \textbf{self-service execution} of tasks that previously required manual,
-          error-prone intervention.}
-        \resumeItem{Extend the framework's \textbf{metrics instrumentation and observability} layer, surfacing
-          dashboards that detect \textbf{performance regressions} in caching and database access paths before
-          they reach production.}
-        \resumeItem{Coordinate a \textbf{weekly working session with 2 QA engineers} to review in-flight
-          activity, unblock technical questions and \textbf{prioritize testing and automation work} across the
-          team's backlog, in an \textbf{Agile/Scrum} environment.}
+          incrementally across client instances and \textbf{measuring performance and production impact}
+          at each stage before wider release.}
+        \resumeItem{Automate server-side operational procedures with \textbf{Rundeck} jobs for
+          \textbf{self-service execution}, and coordinate a \textbf{weekly working session with 2 QA
+          engineers} to prioritize testing and automation work in an \textbf{Agile/Scrum} environment.}
       \resumeItemListEnd
 
     \resumeSubheading
@@ -172,14 +164,13 @@ Python and JavaScript services backed by MySQL and Redis.
       \resumeItemListStart
         \resumeItem{Built \textbf{automated regression and E2E test suites} with \textbf{Selenium} and
           unit tests, replacing \textbf{20} recurring manual regression passes per release cycle.}
-        \resumeItem{Executed \textbf{exploratory, data consistency and regression testing} across releases
-          and authored reproducible \textbf{defect reports}, driving them to resolution with development teams.}
-        \resumeItem{Validated backend behaviour by inspecting \textbf{HTTP request/response traffic} and
-          querying \textbf{MySQL} directly to confirm \textbf{data integrity} across services.}
+        \resumeItem{Executed \textbf{exploratory, data consistency and regression testing} across
+          releases, authoring reproducible \textbf{defect reports} through to resolution, and validated
+          backend behaviour by inspecting \textbf{HTTP traffic} and querying \textbf{MySQL} directly to
+          confirm \textbf{data integrity}.}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
-
 
 %-----------PROJECTS-----------
 \section{Projects}
@@ -188,59 +179,54 @@ Python and JavaScript services backed by MySQL and Redis.
       \resumeProjectHeading
           {\textbf{Catox} — Multiplayer Strategy Game $|$ \emph{Luau, React (jsdotlua), Rodux, Rojo, Wally, TestEZ}}{2026 -- Present}
           \resumeItemListStart
-            \resumeItem{Architected a \textbf{server-authoritative multiplayer game} ($\sim$\textbf{49K LOC}
-              Luau, live on Roblox) in which every state transition is validated server-side, eliminating
-              client-side exploits.}
-            \resumeItem{Implemented a \textbf{Command pattern gateway} routing all RemoteEvents and
-              RemoteFunctions through a single \textbf{validation, authorization and abuse-detection} layer,
-              centralizing security checks instead of scattering them across call sites.}
-            \resumeItem{Maintain a \textbf{67-spec automated test suite} (TestEZ + Lune) executed headlessly,
-              including an \textbf{architectural regression test} that fails the build if any code bypasses
-              the event gateway.}
-            \resumeItem{Built a component-based UI with \textbf{React} and \textbf{Rodux} state management,
-              opponent AI with pluggable scoring strategies benchmarked through an \textbf{A/B experiment
-              harness}, and funnel analytics and match telemetry to measure onboarding drop-off.}
+            \resumeItem{Architected a \textbf{server-authoritative multiplayer game}
+              ($\sim$\textbf{49K LOC} Luau, live on Roblox) where every state transition is validated
+              server-side, routing all RemoteEvents and RemoteFunctions through a single
+              \textbf{Command pattern gateway} so validation, authorization and abuse detection live in
+              one layer rather than hundreds of call sites.}
+            \resumeItem{Wrote core game logic as \textbf{headless modules with injected dependencies} so
+              it could be mocked and run outside the Roblox engine — a \textbf{67-spec automated suite}
+              (TestEZ + Lune) over logic the engine cannot unit test. Abstracting execution from any real
+              player session also made \textbf{AI opponents} possible.}
           \resumeItemListEnd
 
       \resumeProjectHeading
           {\textbf{Courts} — Booking Automation Bot $|$ \emph{Python, Playwright, asyncio, SQLite, Docker}}{2026}
           \resumeItemListStart
-            \resumeItem{Built an \textbf{asynchronous Telegram bot} that scrapes live tennis court availability
-              and \textbf{auto-reserves} slots the moment they are released at midnight, automating a manual
-              booking race for a group of players.}
+            \resumeItem{Built an \textbf{asynchronous Telegram bot} that scrapes live tennis court
+              availability and \textbf{auto-reserves} slots the moment they are released at midnight,
+              automating a booking race a group of players kept losing.}
             \resumeItem{Reverse-engineered an ASP.NET booking platform's internal APIs (ViewState /
-              EventValidation, session-bound tokens) and drove authenticated flows with \textbf{Playwright}
-              and \textbf{httpx}; encrypted credentials at rest with \textbf{Fernet (AES)} and persisted
-              sessions, reservations and cached availability in \textbf{SQLite}.}
-            \resumeItem{Diagnosed a production outage through \textbf{root cause analysis} — booking tokens
-              fetched in one HTTP session were rejected when submitted from another — shipped the
-              same-session fix and documented it in a written \textbf{post-mortem}.}
-            \resumeItem{\textbf{Containerized with Docker} and deployed with a persistent volume and scheduled
-              job queue; covered availability parsing with \textbf{pytest} against recorded API fixtures.}
+              EventValidation, session-bound tokens) and drove authenticated flows with
+              \textbf{Playwright} and \textbf{httpx}; encrypted credentials at rest with
+              \textbf{Fernet (AES)} and persisted sessions, reservations and cached availability in
+              \textbf{SQLite}.}
+            \resumeItem{Diagnosed a production outage through \textbf{root cause analysis} — booking
+              tokens fetched in one HTTP session were rejected when submitted from another — shipped the
+              same-session fix and documented it in a written \textbf{post-mortem}. \textbf{Dockerised}
+              deploy with a persistent volume; \textbf{pytest} coverage over the availability parser.}
           \resumeItemListEnd
 
     \resumeSubHeadingListEnd
-
 
 %-----------TECHNICAL SKILLS-----------
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
      \textbf{Languages}{: PHP, Python, JavaScript/TypeScript, Luau, Java, SQL, HTML/CSS, Bash} \\
-     \textbf{Testing \& QA}{: Test Automation, Test Automation Frameworks, Selenium WebDriver, Playwright,
-       pytest, Unit Testing, Integration Testing, API Testing, End-to-End (E2E) Testing, Regression Testing,
-       Exploratory Testing, Parallel Test Execution, Test Plans \& Test Cases, Defect Tracking,
-       Root Cause Analysis, Shift-Left Testing, Postman, Charles Proxy} \\
+     \textbf{Testing \& QA}{: Test Automation Frameworks, Selenium WebDriver, Playwright, pytest,
+       Unit / Integration / API / End-to-End (E2E) Testing, Regression Testing, Exploratory Testing,
+       Parallel Test Execution, Test Plans \& Cases, Defect Tracking, Root Cause Analysis,
+       Shift-Left Testing, Postman, Charles Proxy} \\
      \textbf{Backend \& Data}{: REST APIs, MySQL, Redis, Caching Strategies, SQLite, Database Design,
        Data Consistency Validation} \\
-     \textbf{DevOps \& Observability}{: Docker, Kubernetes, CI/CD Pipelines, Rundeck, Git \& GitHub, Linux,
-       Metrics Instrumentation, Log Analysis, Monitoring \& Alerting} \\
+     \textbf{DevOps}{: Docker, Jenkins, CI/CD Pipelines, Debian Packaging, Rundeck, Git \& GitHub,
+       Linux, Metrics Instrumentation, Log Analysis, Monitoring \& Alerting} \\
      \textbf{Practices}{: Agile / Scrum, SDLC \& STLC, Release Management, Progressive / Phased Rollouts,
        Code Review, Technical Specification Writing, Cross-Functional Collaboration, Mentoring}
     }}
  \end{itemize}
  \vspace{-14pt}
-
 
 %-----------EDUCATION-----------
 \section{Education}
@@ -248,15 +234,11 @@ Python and JavaScript services backed by MySQL and Redis.
     \resumeSubheading
       {Universidad Tecnológica Nacional (UTN) — Córdoba}{Graduated Jun 2024}
       {Engineer's Degree, Information Systems Engineering (5-year program) — GPA 8.67 / 10}{Córdoba, Argentina}
-      \resumeItemListStart
-        \resumeItem{Successfully cleared all terminal exams on the first attempt.}
-      \resumeItemListEnd
     \resumeSubheading
       {Cambridge University — First Certificate in English (FCE)}{}
       {}{England}
   \resumeSubHeadingListEnd
   \vspace{-6pt}
-
 
 %-----------LANGUAGES-----------
 \section{Languages}
@@ -265,7 +247,6 @@ Python and JavaScript services backed by MySQL and Redis.
      Spanish — Native \hspace{10pt} $|$ \hspace{10pt} English — Advanced (professional working proficiency)
     }}
  \end{itemize}
-
 
 %-------------------------------------------
 \end{document}

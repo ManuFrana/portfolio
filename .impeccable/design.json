@@ -265,7 +265,7 @@
       "kind": "custom",
       "refersTo": "panel",
       "description": "Definition row on a 178px term column, hairline-separated. Stacks below 860px.",
-      "html": "<dl class=\"ds-rows\"><div class=\"ds-row\"><dt>Languages</dt><dd>PHP \u00b7 Python \u00b7 JavaScript / TypeScript \u00b7 Luau \u00b7 SQL</dd></div><div class=\"ds-row\"><dt>DevOps</dt><dd>Docker \u00b7 Kubernetes \u00b7 CI/CD pipelines \u00b7 Rundeck \u00b7 Linux</dd></div></dl>",
+      "html": "<dl class=\"ds-rows\"><div class=\"ds-row\"><dt>Languages</dt><dd>PHP \u00b7 Python \u00b7 JavaScript / TypeScript \u00b7 Luau \u00b7 SQL</dd></div><div class=\"ds-row\"><dt>DevOps</dt><dd>Docker \u00b7 Jenkins \u00b7 CI/CD pipelines \u00b7 Rundeck \u00b7 Linux</dd></div></dl>",
       "css": ".ds-rows{border-top:1px solid #1C1F24;margin:0}.ds-row{display:grid;grid-template-columns:178px minmax(0,1fr);gap:24px;padding:17px 0;border-bottom:1px solid #1C1F24}.ds-row dt{font-family:'Azeret Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7C838C;padding-top:4px}.ds-row dd{margin:0;color:#9AA1A9;font-size:15px;line-height:1.65;font-family:'Chivo',system-ui,sans-serif}@media (max-width:860px){.ds-row{grid-template-columns:minmax(0,1fr);gap:7px}.ds-row dt{padding-top:0}}"
     },
     {
